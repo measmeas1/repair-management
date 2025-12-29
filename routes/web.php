@@ -11,3 +11,4 @@ Route::get('/dashboard', function () {
 
 Route::view('/staff', 'dashboard.staff')->name('staff');
 Route::view('/customers', 'dashboard.customers')->name('customers');
+Route::view('/vehicles', 'dashboard.vehicles')->name('vehicles');
