@@ -15,4 +15,5 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 
 Route::view('/staff', 'screens.staff')->name('staff');
+Route::view('/customers', view: 'screens.customers')->name('customers');
 
