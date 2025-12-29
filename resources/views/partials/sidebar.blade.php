@@ -20,9 +20,8 @@
         <i class="bi bi-people"></i> Customers
     </a>
 
-
-
-    <a href="#">
+    <a href="{{ route('vehicles') }}"
+       class="{{ request()->routeIs('vehicles') ? 'active' : '' }}">
         <i class="bi bi-car-front"></i> Vehicles
     </a>
 
