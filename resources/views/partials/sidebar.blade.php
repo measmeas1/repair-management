@@ -25,7 +25,7 @@
         <i class="bi bi-car-front"></i> Vehicles
     </a>
 
-    <a href="#">
+    <a href="{{ route('services') }}" class="{{ request()->routeIs('services') ? 'active' : '' }}">
         <i class="bi bi-wrench"></i> Services
     </a>
 
