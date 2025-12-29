@@ -119,7 +119,7 @@
 <div class="d-flex">
     @include('partials.sidebar')
 
-    <div class="flex-grow-1">
+    <div class="grow">
         @include('partials.navbar')
 
         <main class="p-4">
