@@ -18,4 +18,5 @@ Route::view('/staff', 'pages.staff')->name('staff');
 Route::view('/customers', view: 'pages.customers')->name('customers');
 Route::view('/vehicles', 'pages.vehicles')->name('vehicles');
 Route::view('/services', 'pages.services')->name('services');
+Route::view('/repair', 'pages.repair')->name('repair');
 

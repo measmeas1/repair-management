@@ -50,7 +50,7 @@
                 <td class="text-center">
                     <i class="fa-solid fa-ellipsis-vertical"></i>
                 </td>
-
+            </tr>
         </tbody>
     </table>
 </div>

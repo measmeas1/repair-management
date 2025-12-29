@@ -29,7 +29,7 @@
         <i class="bi bi-wrench"></i> Services
     </a>
 
-    <a href="#">
+    <a href="{{ route('repair') }}" class="{{ request()->routeIs('repair') ? 'active' : '' }}">
         <i class="bi bi-file-earmark-text"></i> Repair Records
     </a>
 
