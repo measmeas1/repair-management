@@ -11,5 +11,8 @@ Route::get('/login', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard.index');
+    return view('screens.dashboard');
 })->name('dashboard');
+
+Route::view('/staff', 'screens.staff')->name('staff');
+
