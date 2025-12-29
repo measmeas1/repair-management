@@ -15,9 +15,12 @@
         <i class="bi bi-person"></i> Staff
     </a>
 
-    <a href="#">
+     <a href="{{ route('customers') }}"
+       class="{{ request()->routeIs('customers') ? 'active' : '' }}">
         <i class="bi bi-people"></i> Customers
     </a>
+
+
 
     <a href="#">
         <i class="bi bi-car-front"></i> Vehicles

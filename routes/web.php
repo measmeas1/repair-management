@@ -10,4 +10,4 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 
 Route::view('/staff', 'dashboard.staff')->name('staff');
-
+Route::view('/customers', 'dashboard.customers')->name('customers');
