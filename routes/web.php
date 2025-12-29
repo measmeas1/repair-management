@@ -8,3 +8,6 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard.dashboard');
 })->name('dashboard');
+
+Route::view('/staff', 'dashboard.staff')->name('staff');
+
