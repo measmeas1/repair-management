@@ -11,11 +11,11 @@ Route::get('/login', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('screens.dashboard');
+    return view('pages.dashboard');
 })->name('dashboard');
 
-Route::view('/staff', 'screens.staff')->name('staff');
-Route::view('/customers', view: 'screens.customers')->name('customers');
-Route::view('/vehicles', 'screens.vehicles')->name('vehicles');
-Route::view('/services', 'screens.services')->name('services');
+Route::view('/staff', 'pages.staff')->name('staff');
+Route::view('/customers', view: 'pages.customers')->name('customers');
+Route::view('/vehicles', 'pages.vehicles')->name('vehicles');
+Route::view('/services', 'pages.services')->name('services');
 

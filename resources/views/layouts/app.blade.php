@@ -112,15 +112,59 @@
         border-radius: 20px;
         font-size: 13px;
     }
+
+    /* Navbar Title */
+.admin-title {
+    font-size: 20px; /* Bigger font size */
+}
+
+/* Divider */
+.divider {
+    width: 1px;
+    height: 30px;
+    background-color: #ccc;
+}
+
+/* Logout button */
+.btn-logout {
+    background: transparent;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-logout:hover {
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+
+    @media (max-width: 768px) {
+    .sidebar {
+        width: 60px;
+    }
+    .sidebar a {
+        justify-content: center;
+    }
+    .sidebar .logo {
+        font-size: 16px;
+        padding: 15px;
+    }
+}
+
     </style>
 </head>
 <body>
 
 <div class="d-flex">
-    @include('partials.sidebar')
+    @include('components.sidebar')
 
     <div class="flex-grow-1">
-        @include('partials.navbar')
+        @include('components.navbar')
 
         <main class="p-4">
             @yield('content')
