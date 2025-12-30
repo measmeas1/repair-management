@@ -10,7 +10,7 @@
         <i class="bi bi-grid"></i> Dashboard
     </a>
 
-    <a href="{{ route('staff') }}"
+    <a href="{{ route('staffs.index') }}"
        class="{{ request()->routeIs('staff') ? 'active' : '' }}">
         <i class="bi bi-person"></i> Staff
     </a>
