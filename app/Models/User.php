@@ -21,7 +21,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'gender',
+        'status',
+        'place',
     ];
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -44,5 +49,9 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function repairs(){
+        return $this->hasMany(Repair::class);
     }
 }

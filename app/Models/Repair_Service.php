@@ -9,4 +9,22 @@ class Repair_Service extends Model
 {
     /** @use HasFactory<\Database\Factories\RepairServiceFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        'repair_id',
+        'service_id',
+        'price',
+        'quantity',
+        'subtotal',
+    ];
+
+    public function repair()
+    {
+        return $this->belongsTo(Repair::class);
+    }
+
+    public function service()
+    {
+        return $this->belongsTo(Service::class);
+    }
 }
