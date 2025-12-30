@@ -33,7 +33,7 @@
         <i class="bi bi-file-earmark-text"></i> Repair Records
     </a>
 
-    <a href="#">
+    <a href="{{ route('profile') }}" class="{{ request()->routeIs('profile') ? 'active' : '' }}">
         <i class="bi bi-person-circle"></i> Profile
     </a>
 </div>
