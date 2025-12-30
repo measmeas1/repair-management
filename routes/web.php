@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StaffController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -14,7 +15,7 @@ Route::get('/dashboard', function () {
     return view('pages.dashboard');
 })->name('dashboard');
 
-Route::view('/staff', 'pages.staff')->name('staff');
+Route::resource('/staffs', StaffController::class );
 Route::view('/customers', view: 'pages.customers')->name('customers');
 Route::view('/vehicles', 'pages.vehicles')->name('vehicles');
 Route::view('/services', 'pages.services')->name('services');
