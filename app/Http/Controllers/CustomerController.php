@@ -11,7 +11,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.customers.index');
     }
 
     /**
@@ -19,7 +19,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.customers.create');
     }
 
     /**
@@ -43,7 +43,7 @@ class CustomerController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('pages.customers.edit');
     }
 
     /**
