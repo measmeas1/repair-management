@@ -11,7 +11,7 @@ class RepairController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.repairs.index');
     }
 
     /**
@@ -19,7 +19,7 @@ class RepairController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.repairs.create');
     }
 
     /**
@@ -35,7 +35,7 @@ class RepairController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('pages.repairs.show');
     }
 
     /**
