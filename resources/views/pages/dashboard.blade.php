@@ -41,7 +41,7 @@
                         <span class="fw-semibold">Active Staffs</span>
                         <i class="bi bi-person"></i>
                     </div>
-                    <h2 class="fw-bold mt-2">2</h2>
+                    <h2 class="fw-bold mt-2">{{ $activeStaff }}</h2>
                     <small class="text-muted">Team member</small>
                 </div>
             </div>
