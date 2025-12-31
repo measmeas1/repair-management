@@ -46,7 +46,7 @@
     </a>
 
     {{-- Profile --}}
-    <a href=""
+    <a href="{{ route('profile.index') }}"
        class="{{ request()->routeIs('profile.*') ? 'active' : '' }}">
         <i class="bi bi-person-circle"></i> Profile
     </a>
