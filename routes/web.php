@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\VehicleController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -17,8 +19,8 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 
 Route::resource('/staffs', StaffController::class );
-Route::view('/customers', view: 'pages.customers')->name('customers');
-Route::view('/vehicles', 'pages.vehicles')->name('vehicles');
+Route::resource('/customers', CustomerController::class);
+Route::resource('/vehicles', VehicleController::class);
 Route::view('/services', 'pages.services')->name('services');
 Route::view('/repair', 'pages.repair')->name('repair');
 Route::resource('/profile', ProfileController::class);
