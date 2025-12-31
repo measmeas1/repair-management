@@ -9,7 +9,8 @@
             Sign in to manage your auto repair business
         </p>
 
-        <form>
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
             <div class="mb-3">
                 <label class="form-label">Email</label>
                 <input type="email" class="form-control" placeholder="Enter email">

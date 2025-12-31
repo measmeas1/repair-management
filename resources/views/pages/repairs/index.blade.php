@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'repair')
+@section('title', 'Repairs')
 
 @section('content')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
