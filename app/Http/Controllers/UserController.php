@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class StaffController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('pages.staffs.index');
+        return view('pages.users.index');
     }
 
     /**
@@ -19,7 +19,7 @@ class StaffController extends Controller
      */
     public function create()
     {
-        return view('pages.staffs.create');
+        return view('pages.users.create');
     }
 
     /**
@@ -43,7 +43,7 @@ class StaffController extends Controller
      */
     public function edit(string $id)
     {
-        return view('pages.staffs.edit');
+        return view('pages.users.edit');
     }
 
     /**
