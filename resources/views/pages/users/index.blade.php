@@ -29,6 +29,7 @@
                 <th>Gender</th>
                 <th>Role</th>
                 <th>Status</th>
+                <th>Date</th>
                 <th class="text-center">Action</th>
             </tr>
         </thead>
@@ -56,6 +57,7 @@
                         <span class="badge bg-danger">Inactive</span>
                     @endif
                 </td>
+                <td>{{ $user->created_at->format('d, M Y') }}</td>
                 <td class="text-center">
                     <div class="dropdown">
                         <a href="#" class="text-dark" id="dropdownMenuButton{{ $user->id }}" data-bs-toggle="dropdown" aria-expanded="false">
