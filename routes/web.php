@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StaffController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,4 +21,4 @@ Route::view('/customers', view: 'pages.customers')->name('customers');
 Route::view('/vehicles', 'pages.vehicles')->name('vehicles');
 Route::view('/services', 'pages.services')->name('services');
 Route::view('/repair', 'pages.repair')->name('repair');
-Route::view('/profile', 'pages.proflie')->name('profile');
+Route::resource('/profile', ProfileController::class);
