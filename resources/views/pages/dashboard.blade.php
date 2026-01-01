@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@php use Illuminate\Support\Str; @endphp
 
 @section('title', 'Dashboard')
 
@@ -19,7 +20,7 @@
                         <span class="fw-semibold">Total Customer</span>
                         <i class="bi bi-people"></i>
                     </div>
-                    <h2 class="fw-bold mt-2">120</h2>
+                    <h2 class="fw-bold mt-2">{{  $totalCustomer }}</h2>
                     <small class="text-muted">All active customer in system</small>
                 </div>
             </div>
@@ -62,10 +63,10 @@
 
     {{-- RIGHT: NEW CUSTOMERS --}}
     <div class="col-md-5">
-        <div class="dashboard-card h-100">
+        <div class="dashboard-card h-100 p-3">
             <h5 class="fw-bold mb-3">New Customers</h5>
 
-            <table class="table dashboard-table">
+            <table class="table table-sm dashboard-table align-middle mb-0">
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -75,31 +76,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Sal</td>
-                        <td>016998521</td>
-                        <td>Phnom Penh</td>
-                        <td>28, Dec, 2025</td>
-                    </tr>
-                    <tr>
-                        <td>Ney</td>
-                        <td>016998521</td>
-                        <td>Kompong Speu</td>
-                        <td>28, Dec, 2025</td>
-                    </tr>
-                    <tr>
-                        <td>Nith</td>
-                        <td>016998521</td>
-                        <td>Kompong Chhnang</td>
-                        <td>28, Dec, 2025</td>
-                    </tr>
-                    <tr>
-                        <td>Meas</td>
-                        <td>016998521</td>
-                        <td>Phnom Penh</td>
-                        <td>28, Dec, 2025</td>
-                    </tr>
-                </tbody>
+                    @forelse ($newCustomers as $customer)
+                        <tr>
+                            <td>{{ Str::limit($customer->name, 10) }}</td>
+                            <td>{{ $customer->phone }}</td>
+                            <td>{{ Str::limit($customer->location, 10) }}</td>
+                            <td>{{ $customer->created_at->format('d M Y') }}</td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="4" class="text-center text-muted">
+                                No new customers
+                            </td>
+                        </tr>
+                    @endforelse
+                    </tbody>                    
             </table>
         </div>
     </div>
