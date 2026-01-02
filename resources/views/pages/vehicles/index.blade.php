@@ -5,7 +5,7 @@
 @section('content')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
 <div class="d-flex justify-content-between mb-3">
-    <h3>Vehicle Management</h3>
+    <h2 class="fw-bold mb-0">Vehicle Management</h2>
     <a href="{{ route('vehicles.create') }}" class="btn btn-secondary">
         <i class="bi bi-plus-circle"></i> Add Vehicle
     </a>
