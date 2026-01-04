@@ -2,10 +2,6 @@
 
 @section('title', 'Profile')
 
-@push('styles')
-<link rel="stylesheet" href="{{ asset('css/profile.css') }}">
-@endpush
-
 @section('content')
 @php
     $user = auth()->user();
@@ -48,13 +44,15 @@
                     <i class="bi bi-pencil"></i> Edit
                 </a>
 
-                <div class="text-muted small">
-                    Joined {{ $user->created_at->format('d M Y') }}
+                <div class="mt-3">
+                    <div class="text-muted small">
+                        Joined {{ $user->created_at->format('d M Y') }}
+                    </div>
+                    
+                    <span class="badge-active mt-2 d-inline-block">
+                        {{ ucfirst($user->status ?? 'active') }}
+                    </span>
                 </div>
-
-                <span class="badge-active mt-2 d-inline-block">
-                    {{ ucfirst($user->status ?? 'active') }}
-                </span>
             </div>
 
         </div>
@@ -63,15 +61,11 @@
     {{-- Personal Information --}}
     <div class="card profile-card">
         <div class="card-body">
-
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h5 class="fw-bold mb-0">Personal Information</h5>
-                <a href="{{ route('profile.edit') }}" class="btn-edit">
-                    <i class="bi bi-pencil"></i> Edit
-                </a>
             </div>
 
-            <div class="row g-4">
+            <div class="row g-4 mb-4">
                 <div class="col-md-4">
                     <div class="info-label">Full Name</div>
                     <div class="info-value">{{ $user->name }}</div>

@@ -62,7 +62,16 @@ class ProfileController extends Controller
             'phone' => 'nullable|string|max:20',
             'place' => 'nullable|string|max:255',
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'current_password' => 'required_with:password|string',
+            'password' => 'nullable|string|min:6|confirmed',
         ]);
+
+        if ($request->filled('password')) {
+            if (!\Hash::check($request->current_password, $user->password)) {
+                return back()->withErrors(['current_password' => 'Current password does not match.']);
+            }
+            $user->password = \Hash::make($request->password);
+        }
 
         if ($request->hasFile('image')) {
 
