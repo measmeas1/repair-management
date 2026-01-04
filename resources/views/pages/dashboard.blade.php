@@ -31,7 +31,7 @@
                         <span class="fw-semibold">Total Revenue</span>
                         <i class="bi bi-currency-dollar"></i>
                     </div>
-                    <h2 class="fw-bold mt-2">$891.0</h2>
+                    <h2 class="fw-bold mt-2">${{ $totalRevenue }}</h2>
                     <small class="text-muted">Revenue this month</small>
                 </div>
             </div>
@@ -53,7 +53,7 @@
                         <span class="fw-semibold">Completed Vehicles</span>
                         <i class="bi bi-car-front"></i>
                     </div>
-                    <h2 class="fw-bold mt-2">8</h2>
+                    <h2 class="fw-bold mt-2">{{ $completeVehicle }}</h2>
                     <small class="text-muted">Vehicle work completed</small>
                 </div>
             </div>

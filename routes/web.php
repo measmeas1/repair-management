@@ -28,7 +28,14 @@ Route::middleware(['auth'])->group(function () {
     // Accessible by both admin and staff
     Route::resource('/customers', CustomerController::class);
     Route::resource('/vehicles', VehicleController::class);
-    Route::resource('/repairs', RepairController::class);
     Route::resource('/profile', ProfileController::class);
+    
+    Route::resource('/repairs', RepairController::class);
+    Route::patch('/repairs/{repair}/status', [RepairController::class, 'updateStatus'])
+    ->name('repairs.updateStatus');
+    Route::get('/repairs/{repair}', [RepairController::class, 'show'])
+    ->name('repairs.show');
+
+
 
 });

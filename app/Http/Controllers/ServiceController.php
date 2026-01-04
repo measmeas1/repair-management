@@ -10,7 +10,7 @@ class ServiceController extends Controller
     // Show all services
     public function index()
     {
-        $services = Service::orderBy('created_at', 'desc')->get();
+        $services = Service::get();
         return view('pages.services.index', compact('services'));
     }
 
@@ -25,8 +25,8 @@ class ServiceController extends Controller
             'service_name' => 'required|string|max:255',
             'price'        => 'required|numeric|min:0',
             'duration'     => 'nullable|string|max:50',
-            'status'       => 'required|in:active,inactive',
             'category'     => 'required|in:Engine,Spray,Maintenance,Electric',
+            'status'       => 'required|in:active,inactive',
         ]);
 
         Service::create($request->all());
@@ -45,8 +45,8 @@ class ServiceController extends Controller
             'service_name' => 'required|string|max:255',
             'price'        => 'required|numeric|min:0',
             'duration'     => 'nullable|string|max:50',
-            'status'       => 'required|in:active,inactive',
             'category'     => 'required|in:Engine,Spray,Maintenance,Electric',
+            'status'       => 'required|in:active,inactive',
         ]);
 
         $service->update($request->all());

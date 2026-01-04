@@ -114,48 +114,55 @@
     }
 
     /* Navbar Title */
-.admin-title {
-    font-size: 20px; /* Bigger font size */
-}
-
-/* Divider */
-.divider {
-    width: 1px;
-    height: 30px;
-    background-color: #ccc;
-}
-
-/* Logout button */
-.btn-logout {
-    background: transparent;
-    border: none;
-    color: #333;
-    cursor: pointer;
-    font-weight: 500;
-    padding: 6px 12px;
-    border-radius: 6px;
-    transition: background 0.2s, color 0.2s;
-}
-
-.btn-logout:hover {
-    background-color: #f0f0f0;
-    color: #000;
-}
-
-
-    @media (max-width: 768px) {
-    .sidebar {
-        width: 60px;
+    .admin-title {
+        font-size: 20px; /* Bigger font size */
     }
-    .sidebar a {
-        justify-content: center;
-    }
-    .sidebar .logo {
-        font-size: 16px;
-        padding: 15px;
-    }
-}
 
+    /* Divider */
+    .divider {
+        width: 1px;
+        height: 30px;
+        background-color: #ccc;
+    }
+
+    /* Logout button */
+    .btn-logout {
+        background: transparent;
+        border: none;
+        color: #333;
+        cursor: pointer;
+        font-weight: 500;
+        padding: 6px 12px;
+        border-radius: 6px;
+        transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-logout:hover {
+        background-color: #f0f0f0;
+        color: #000;
+    }
+
+
+        @media (max-width: 768px) {
+        .sidebar {
+            width: 60px;
+        }
+        .sidebar a {
+            justify-content: center;
+        }
+        .sidebar .logo {
+            font-size: 16px;
+            padding: 15px;
+        }
+    }
+    .status-select {
+    text-align: left;
+    padding-left: 0.75rem;
+    padding-right: 1.75rem; 
+    }
+    .status-select option {
+        padding-left: 0.25rem;
+    }
     </style>
 </head>
 <body>

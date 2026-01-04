@@ -18,9 +18,9 @@ class Service extends Model
         'category',
     ];
 
-    public function services()
+    public function repairServices()
     {
-        return $this->hasMany(Repair_Service::class);
+        return $this->hasMany(RepairService::class);
     }
 
     public function repairs()
