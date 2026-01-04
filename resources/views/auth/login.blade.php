@@ -39,8 +39,9 @@
             </div>
             @endif
 
-            <button type="submit" class="btn btn-purple w-100 mt-3">
-                Sign In
+            <button type="submit" class="btn btn-purple w-100 mt-3" id="loginButton">
+                <span id="buttonText">Sign In</span>
+                <span id="buttonSpinner" class="spinner-border spinner-border-sm ms-2 d-none" role="status" aria-hidden="true"></span>
             </button>
 
         </form>
@@ -51,5 +52,20 @@
 
     </div>
 </div>
+
+<script>
+    const loginForm = document.querySelector('form');
+    const loginButton = document.getElementById('loginButton');
+    const buttonText = document.getElementById('buttonText');
+    const buttonSpinner = document.getElementById('buttonSpinner');
+
+    loginForm.addEventListener('submit', function() {
+        loginButton.disabled = true;
+
+        buttonSpinner.classList.remove('d-none');
+
+        buttonText.textContent = 'Signing In...';
+    });
+</script>
 
 @endsection

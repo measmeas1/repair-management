@@ -30,7 +30,16 @@
         .form-control::placeholder {
             color: #b0b0b0;
             opacity: 1;
-    }
+        }
+        .btn-purple {
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-purple:disabled {
+            opacity: 0.8;
+        }
+
     </style>
 </head>
 <body>
