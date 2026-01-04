@@ -162,7 +162,97 @@
     .status-select option {
         padding-left: 0.25rem;
     }
-    </style>
+
+    /* Profile Page Styles */
+    .profile-page h1 {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 6px;
+    }
+
+    .profile-card {
+        border-radius: 14px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        border: none;
+        background: #fff;
+    }
+
+    .profile-avatar {
+        width: 90px;
+        height: 90px;
+        background: #e9ecef;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 36px;
+        font-weight: 700;
+        color: #555;
+    }
+    .profile-avatar-img {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .profile-name {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 2px;
+        line-height: 1.2;
+    }
+
+    .profile-role {
+        font-size: 14px;
+        color: #888;
+        margin: 0;
+    }
+
+    .profile-right {
+        text-align: right;
+    }
+
+    .btn-edit {
+        background: #2f2f2f;
+        color: #fff;
+        border-radius: 20px;
+        padding: 6px 18px;
+        font-size: 14px;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        height: 36px;
+        text-decoration: none;
+    }
+
+    .btn-edit:hover {
+        background: #1f1f1f;
+        color: #fff;
+    }
+
+    .badge-active {
+        background: #d1f7dc;
+        color: #1f8f3a;
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 600;
+        display: inline-block;
+    }
+
+    .info-label {
+        color: #8a8a8a;
+        font-size: 14px;
+        margin-bottom: 2px;
+    }
+
+    .info-value {
+        font-size: 16px;
+        font-weight: 600;
+    }
+</style>
 </head>
 <body>
 

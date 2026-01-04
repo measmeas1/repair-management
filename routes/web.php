@@ -25,17 +25,13 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/services', ServiceController::class);
     });
 
-    // Accessible by both admin and staff
     Route::resource('/customers', CustomerController::class);
     Route::resource('/vehicles', VehicleController::class);
-    Route::resource('/profile', ProfileController::class);
+
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
     
     Route::resource('/repairs', RepairController::class);
-    Route::patch('/repairs/{repair}/status', [RepairController::class, 'updateStatus'])
-    ->name('repairs.updateStatus');
-    Route::get('/repairs/{repair}', [RepairController::class, 'show'])
-    ->name('repairs.show');
-
-
-
+    Route::patch('/repairs/{repair}/status', [RepairController::class, 'updateStatus'])->name('repairs.updateStatus');
 });

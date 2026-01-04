@@ -2,125 +2,59 @@
 
 @section('title', 'Profile')
 
+@push('styles')
+<link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+@endpush
+
 @section('content')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
-<style>
-    /* Page title */
-    .profile-page h1 {
-        font-size: 32px;
-        font-weight: 700;
-        margin-bottom: 6px;
-    }
-
-    /* Card style */
-    .profile-card {
-        border-radius: 14px;
-        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-        border: none;
-        background: #fff;
-    }
-
-    /* Avatar */
-    .profile-avatar {
-        width: 90px;
-        height: 90px;
-        background: #ddd;
-        border-radius: 50%;
-    }
-
-    /* Name & Role */
-    .profile-name {
-        font-size: 20px;
-        font-weight: 700;
-        margin-bottom: 2px;
-        line-height: 1.2;
-    }
-
-    .profile-role {
-        font-size: 14px;
-        color: #888;
-        margin: 0;
-    }
-
-    /* Right section */
-    .profile-right {
-        text-align: right;
-    }
-
-    /* Edit button (same size everywhere) */
-    .btn-edit {
-        background: #2f2f2f;
-        color: #fff;
-        border-radius: 20px;
-        padding: 6px 18px;
-        font-size: 14px;
-        font-weight: 500;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        height: 36px;
-        text-decoration: none;
-    }
-
-    .btn-edit:hover {
-        background: #1f1f1f;
-        color: #fff;
-    }
-
-    /* Active badge */
-    .badge-active {
-        background: #d1f7dc;
-        color: #1f8f3a;
-        padding: 6px 16px;
-        border-radius: 20px;
-        font-size: 14px;
-        font-weight: 600;
-        display: inline-block;
-    }
-
-    /* Info text */
-    .info-label {
-        color: #8a8a8a;
-        font-size: 14px;
-        margin-bottom: 2px;
-    }
-
-    .info-value {
-        font-size: 16px;
-        font-weight: 600;
-    }
-</style>
+@php
+    $user = auth()->user();
+@endphp
 
 <div class="profile-page">
 
     {{-- Page Header --}}
-    <div class="mb-4">
-        <h1>Profile</h1>
-        <p class="text-muted">Manage account profile</p>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold mb-0">Profile</h2>
     </div>
+    <p class="text-muted mb-4">Manage your account information</p>
 
-    {{-- My Profile Card --}}
+    {{-- Profile Card --}}
     <div class="card profile-card mb-4">
         <div class="card-body d-flex justify-content-between align-items-center">
+
             <div class="d-flex align-items-center gap-4">
-                <div class="profile-avatar"></div>
+                {{-- Avatar --}}
+                <div class="profile-avatar">
+                    @if($user->image)
+                    <img src="{{ asset('storage/avatars/'.$user->image) }}" alt="Profile" class="profile-avatar-img">
+                    @else
+                        <div class="profile-avatar">
+                            {{ strtoupper(substr($user->name, 0, 1)) }}
+                        </div>
+                    @endif
+                </div>
 
                 <div>
-                    <div class="profile-name">Name</div>
-                    <div class="profile-role">Role</div>
+                    <div class="profile-name">{{ $user->name }}</div>
+                    <div class="profile-role">
+                        {{ $user->role ?? 'Staff' }}
+                    </div>
                 </div>
             </div>
 
-            <div class="profile-right">
-                <a href="#" class="btn-edit mb-2">
-                    ✏️ Edit
+            <div class="text-end">
+                <a href="{{ route('profile.edit') }}" class="btn-edit mb-2">
+                    <i class="bi bi-pencil"></i> Edit
                 </a>
 
-                <div class="fw-semibold mb-1">
-                    Join on 29 Dec/2025
+                <div class="text-muted small">
+                    Joined {{ $user->created_at->format('d M Y') }}
                 </div>
 
-                <span class="badge-active">Active</span>
+                <span class="badge-active mt-2 d-inline-block">
+                    {{ ucfirst($user->status ?? 'active') }}
+                </span>
             </div>
 
         </div>
@@ -132,40 +66,42 @@
 
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h5 class="fw-bold mb-0">Personal Information</h5>
-                <a href="#" class="btn-edit">
-                    ✏️ Edit
+                <a href="{{ route('profile.edit') }}" class="btn-edit">
+                    <i class="bi bi-pencil"></i> Edit
                 </a>
             </div>
 
             <div class="row g-4">
                 <div class="col-md-4">
-                    <div class="info-label">First Name</div>
-                    <div class="info-value">Thim</div>
+                    <div class="info-label">Full Name</div>
+                    <div class="info-value">{{ $user->name }}</div>
                 </div>
 
                 <div class="col-md-4">
-                    <div class="info-label">Last Name</div>
-                    <div class="info-value">Visal</div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="info-label">City</div>
-                    <div class="info-value">Takeo</div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="info-label">Email Address</div>
-                    <div class="info-value">visal@gmail.com</div>
+                    <div class="info-label">Email</div>
+                    <div class="info-value">{{ $user->email }}</div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="info-label">Phone</div>
-                    <div class="info-value">+855 123456789</div>
+                    <div class="info-value">{{ $user->phone ?? '-' }}</div>
                 </div>
 
                 <div class="col-md-4">
-                    <div class="info-label">Province</div>
-                    <div class="info-value">Phnom Penh</div>
+                    <div class="info-label">Place</div>
+                    <div class="info-value">{{ $user->place ?? '-' }}</div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="info-label">Role</div>
+                    <div class="info-value">{{ $user->role ?? 'Staff' }}</div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="info-label">Account Status</div>
+                    <div class="info-value text-success fw-semibold">
+                        {{ ucfirst($user->status ?? 'active') }}
+                    </div>
                 </div>
             </div>
 
@@ -173,5 +109,4 @@
     </div>
 
 </div>
-
 @endsection

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -40,17 +42,50 @@ class ProfileController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit()
     {
-        return view('pages.profile.edit');
+        $user = Auth::user();
+        return view('pages.profile.edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        /** @var \App\Models\User $user */
+        $user = Auth::user();
+
+        $request->validate([
+            'name'  => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'phone' => 'nullable|string|max:20',
+            'place' => 'nullable|string|max:255',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
+
+        if ($request->hasFile('image')) {
+
+            if ($user->image) {
+                Storage::disk('public')->delete('avatars/' . $user->image);
+            }
+
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->storeAs('avatars', $imageName, 'public');
+
+            $user->image = $imageName;
+        }
+
+        $user->update([
+            'name'  => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'place' => $request->place,
+        ]);
+
+        return redirect()
+            ->route('profile.index')
+            ->with('success', 'Profile updated successfully');
     }
 
     public function destroy(string $id)
