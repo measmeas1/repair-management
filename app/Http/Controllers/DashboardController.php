@@ -21,13 +21,22 @@ class DashboardController extends Controller
 
         $totalRevenue = Repair::where('status', 'completed')->sum('total');
 
+        $recentRepairs = Repair::with([
+            'vehicle.customer',
+            'staff',
+            'services'
+        ])
+        ->take(5)
+        ->get();
+
         
         return view('pages.dashboard', compact(
             'activeStaff', 
             'totalCustomer',
             'newCustomers',
             'completeVehicle',
-            'totalRevenue'
+            'totalRevenue',
+            'recentRepairs'
         ));
     }
 }

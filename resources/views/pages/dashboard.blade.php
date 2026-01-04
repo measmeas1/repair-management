@@ -4,7 +4,9 @@
 @section('title', 'Dashboard')
 
 @section('content')
-<h2 class="fw-bold">Dashboard</h2>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold mb-0">Dashboard</h2>
+</div>
 <p class="text-muted mb-4">Welcome to your vehicle service management system</p>
 
 {{-- STATS + NEW CUSTOMERS --}}
@@ -104,26 +106,67 @@
     <table class="table">
         <thead>
             <tr>
+                <th>ID</th>
                 <th>Customer</th>
                 <th>Vehicle</th>
-                <th>Brand</th>
-                <th>Assigned To</th>
+                <th>Plate</th>
+                <th>Staff</th>
+                <th>Service</th>
                 <th>Status</th>
                 <th>Total Cost</th>
                 <th>Service Date</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
+            @forelse($recentRepairs as $repair)
             <tr>
-                <td>Sal</td>
-                <td>Camry 02</td>
-                <td>Toyota</td>
-                <td>Meas</td>
-                <td><span class="badge bg-success">Completed</span></td>
-                <td>$140.0</td>
-                <td>28/Dec/2025</td>
+                <td>{{ $repair->id }}</td>
+            
+                <td>{{ $repair->vehicle->customer->name }}</td>
+            
+                <td>{{ $repair->vehicle->model }} {{ $repair->vehicle->name }}</td>
+            
+                <td>{{ $repair->vehicle->plate_number }}</td>
+            
+                <td>{{ $repair->staff->name }}</td>
+            
+                <td>
+                    <span class="badge bg-secondary">
+                        {{ $repair->services->count() }} services
+                    </span>
+                </td>
+            
+                <td>
+                    @if($repair->status === 'completed')
+                        <span class="badge bg-success">Completed</span>
+                    @elseif($repair->status === 'in progress')
+                        <span class="badge bg-warning">In Progress</span>
+                    @else
+                        <span class="badge bg-secondary">Not Started</span>
+                    @endif
+                </td>
+            
+                <td>${{ number_format($repair->total, 2) }}</td>
+            
+                <td>{{ $repair->created_at->format('d M Y') }}</td>
+            
+                <td>
+                    <a href="{{ route('repairs.show', $repair->id) }}"
+                       class="btn btn-sm btn-outline-primary">
+                        View
+                    </a>
+                </td>
             </tr>
-        </tbody>
+            @empty
+            <tr>
+                <td colspan="10" class="text-center text-muted">
+                    No recent repairs
+                </td>
+            </tr>
+            @endforelse
+            </tbody>
+            
     </table>
 </div>
 @endsection

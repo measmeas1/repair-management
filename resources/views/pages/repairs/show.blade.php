@@ -50,8 +50,12 @@
         </tbody>
     </table>
 
-    <a href="{{ route('repairs.index') }}" class="btn btn-secondary mt-3">
+    <a href="{{ url()->previous() !== url()->current() 
+        ? url()->previous() 
+        : route('repairs.index') }}"
+    class="btn btn-secondary mt-3">
         Back
     </a>
+
 </div>
 @endsection
